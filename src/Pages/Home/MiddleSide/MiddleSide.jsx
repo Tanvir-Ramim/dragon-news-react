@@ -9,7 +9,7 @@ const MiddleSide = () => {
           .then(res=>res.json())
           .then(data=>setInfo(data))
       },[])
-      console.log(info)
+  
     return (
         <div>
                 <h1 className="text-[#403F3F] text-[20px] font-semibold  ">Dragon News Home</h1>
