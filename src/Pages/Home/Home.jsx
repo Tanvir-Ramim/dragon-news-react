@@ -2,6 +2,8 @@ import Header from "../../Shared/Header";
 import Navbar from "../../Shared/Navbar";
 import BreakingNews from "./BreakingNews";
 import LeftSideHome from "./LeftSideHome";
+import MiddleSide from "./MiddleSide/MiddleSide";
+
 import RightSideHome from "./RightSideHome";
 
 
@@ -15,8 +17,9 @@ const Home = () => {
                 <div className="border">
             <LeftSideHome></LeftSideHome>
                 </div>
-                <div className="md:col-span-2 border">
-              <h1>New Coming soon </h1>
+                {/* this is middle position of page */}
+                <div className="md:col-span-2 ">
+               <MiddleSide></MiddleSide>
                 </div>
                 <div className="border">
                  <RightSideHome></RightSideHome>

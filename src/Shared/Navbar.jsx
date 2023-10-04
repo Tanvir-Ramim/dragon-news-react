@@ -19,7 +19,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="btn btn-ghost normal-case text-xl">Dragon News</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -32,7 +32,7 @@ const Navbar = () => {
                         <img src={defaultImage} />
                     </div>
                 </label>
-                <Link><button className="btn">Login</button></Link>
+                <Link to='/login'><button className="btn">Login</button></Link>
             </div>
         </div>
     );
