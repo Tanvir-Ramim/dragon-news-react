@@ -1,30 +1,44 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider";
+import Navbar from "../Shared/Navbar";
 
 const Login = () => {
   const [success,setSuccess]=useState(null)
   const [error,setError]=useState(null)
-  const {loginUser}=useContext(AuthContext)
+  const {loginUser,user,logOut}=useContext(AuthContext)
+  const location=useLocation()
+  console.log('aita login ar',location)
+  const navigate=useNavigate()
   const handleSubmit=(e)=>{
       e.preventDefault()
       const form=new FormData(e.currentTarget)
       const email=form.get('email')
       const password=form.get('password')
       console.log(email,password)
+    
        loginUser(email,password)
-       .then(result=>{
-           setSuccess(result.user)
+       .then((result)=>{
+           if(!result.user.emailVerified){
+            
+               logOut()
+               setError('please verified your email')
+               
+           }
+            
+           setSuccess('Successfully Login')
+           navigate(location?.state? location.state: '/')
 
        })
        .catch(error=>{
-           setError(error)
+           setError(error.message)
        })
 
   }
 
     return (
         <div>
+          <Navbar></Navbar>
             <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
@@ -54,7 +68,11 @@ const Login = () => {
         <Link to={'/registration'}>Registration Page</Link>
       </div>
       </form>
+      
     </div>
+    {
+      error && <h1>{error}</h1>
+    }
   </div>
 </div>
 </div>

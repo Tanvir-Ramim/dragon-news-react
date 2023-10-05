@@ -11,7 +11,7 @@ const LeftSideHome = () => {
           .then(data=>setCategory(data))
      },[])
     return (
-        <div>
+        <div className="">
             <h1 className="text-[#403F3F] text-xl">All Category </h1>
             {
                 category.map(item=><NavLink  className={({ isActive }) =>
